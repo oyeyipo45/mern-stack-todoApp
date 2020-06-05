@@ -4,8 +4,8 @@ const Schema = mongoose.Schema;
 
 
 //create Schema
-const ItemSchema = new Schema({
-    name: {
+const TodoSchema = new Schema({
+    title: {
         type: String,
         required: true
     }, 
@@ -16,4 +16,4 @@ const ItemSchema = new Schema({
 });
 
 
-module.exports = Item = mongoose.model('item', ItemSchema)
+module.exports = Todo = mongoose.model('item', TodoSchema)
