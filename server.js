@@ -18,7 +18,7 @@ app.use(express.urlencoded({extended: true}))
 //db config
 const db = require('./config/keys').mongoURI
 
-connect to Mongo 
+//connect to Mongo 
  mongoose
     .connect(db, {
       useUnifiedTopology: true,
