@@ -13,6 +13,7 @@ import {
 
  class AppNavBar extends Component {
     
+    
     state = {
         isOpen: false
     }
@@ -23,14 +24,18 @@ import {
         });
     }
 
+    wrapper = React.createRef();
+    
+    
     render() {
+       
         return (
             <div>
                 <Navbar color="dark" dark expand="sm" className="mb-5">
                 <Container>
                     <NavbarBrand href="/">Todo App</NavbarBrand>
                     <NavbarToggler onClick={this.toggle} />
-                    <Collapse isOpen={this.state.isOpen} navbar>
+                    <Collapse ref={this.wrapper} isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
                             <NavItem >
                                 <NavLink href="https://twitter.com/d_oyeyipo">
