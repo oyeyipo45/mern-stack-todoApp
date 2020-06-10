@@ -1,25 +1,28 @@
 import React, { Component } from 'react';
 import { Container, ListGroup, ListGroupItem, Button } from "reactstrap";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
-import { v4 as uuidv4 } from 'uuid';
-import { connect } from "react-redux"
-import { getTodos } from '../actions/todoActions';
-import PropTypes from "prop-types"
-
+import { connect } from "react-redux";
+import { getTodos, deleteTodo} from '../actions/todoActions';
+import PropTypes from "prop-types";
 
 class TodosList extends Component {
 
     componentDidMount() {
         this.props.getTodos();
     }
- 
+    
+    handleDelete = (id) => {
+        this.props.deleteTodo(id)
+    }
+
     render() { 
 
         const { todos } = this.props.todo;
+        console.log(this.props)
         
         return ( 
             <Container>
-                <Button
+                {/* <Button
                 color="dark"
                 style={{marginBottom: '2rem'}}
                 onClick={() => {
@@ -31,7 +34,7 @@ class TodosList extends Component {
                     }
                 }}>
                     Add Todo
-                    </Button>
+                    </Button> */}
                     <ListGroup>
                         <TransitionGroup className="todo-list">
                             {todos.map(({id, todo}) => (
@@ -54,12 +57,9 @@ class TodosList extends Component {
                                         className="remove-btn d-flex justify-content-end"
                                         color="danger"
                                        
+                                        
                                         size="sm"
-                                        onClick = {() => {
-                                            this.setState({
-                                                todos: this.state.todos.filter(todo => todo.id !== id)
-                                            })
-                                        }}>
+                                        onClick = {this.handleDelete.bind(this, id)}>
                                           &times;  
                                         </Button>
                                         </div>
@@ -79,7 +79,8 @@ class TodosList extends Component {
 
 TodosList.propTypes = {
     todo: PropTypes.object.isRequired,
-    getTodos: PropTypes.func.isRequired
+    getTodos: PropTypes.func.isRequired,
+    deleteTodo: PropTypes.func.isRequired
 }
 
 const mapStateToProps = (state) => ({
@@ -87,7 +88,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = {
-    getTodos
+    getTodos, deleteTodo
 }
  
 export default connect(mapStateToProps, mapDispatchToProps)(TodosList);

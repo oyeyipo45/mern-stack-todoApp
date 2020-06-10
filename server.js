@@ -7,7 +7,6 @@ const app = express();
 const todos = require("./routes/api/todos")
 
 
-
 //Apply Middleware
 app.use(morgan("tiny"));
 
