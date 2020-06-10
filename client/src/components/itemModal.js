@@ -10,13 +10,13 @@ import {
   Input,
 } from "reactstrap";
 import { connect } from "react-redux";
-import { addItem } from "../actions/todoActions";
+import { addTodo } from "../actions/todoActions";
 import { v4 as uuid } from "uuid";
 
 class ItemModal extends Component {
   state = {
     modal: false,
-    name: "",
+    todo: " ",
   };
 
   toggle = () => {
@@ -36,8 +36,14 @@ class ItemModal extends Component {
 
       const newTodo = {
         id: uuid(),
-        name: this.state.name
+        todo: this.state.todo
       }
+      console.log(newTodo);
+      
+
+      this.props.addTodo(newTodo)
+
+      this.toggle()
   }
 
 
@@ -55,11 +61,11 @@ class ItemModal extends Component {
             <ModalBody>
                 <Form onSubmit={this.onSubmit}>
                      <FormGroup>
-                     <Label for="item">Todo</Label>
+                     <Label for="todo">Todo</Label>
                     <Input 
                     type="text"
-                    name="name"
-                    id="item"
+                    name="todo"
+                    id="todo"
                     placeholder="Add Todo"
                     onChange={this.onChange}
                     />
@@ -78,4 +84,11 @@ class ItemModal extends Component {
   }
 }
 
-export default connect()(ItemModal);
+const mapStateToProps = (state) => ({
+    todo : state.todo
+})
+
+const mapDisPatchToProps = {
+    addTodo
+}
+export default connect(mapStateToProps, mapDisPatchToProps)(ItemModal);

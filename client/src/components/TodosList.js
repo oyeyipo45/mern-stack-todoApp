@@ -57,7 +57,6 @@ class TodosList extends Component {
                                         className="remove-btn d-flex justify-content-end"
                                         color="danger"
                                        
-                                        
                                         size="sm"
                                         onClick = {this.handleDelete.bind(this, id)}>
                                           &times;  
