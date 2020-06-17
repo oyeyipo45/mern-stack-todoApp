@@ -13,6 +13,9 @@ app.use(morgan("tiny"));
 //body parser middleware
 app.use(express.json());
 app.use(express.urlencoded({extended: true}))
+// const bodyParser = require("body-parser")
+// app.use(bodyParser.json())
+// app.use(bodyParser.urlencoded({ extended: true }));
 
 //db config
 const db = require('./config/keys').mongoURI

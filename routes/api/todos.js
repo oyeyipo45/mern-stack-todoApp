@@ -23,9 +23,9 @@ router.get("/:id", (req, res) => {
 
 //@route POST api/todos
 //@desc POST a todo
-router.post("/", async (req, res) => {
+router.post("/", (req, res) => {
   const newTodo = new Todo({
-    title: req.body.title,
+    todo: req.body.todo,
   });
   newTodo.save().then((todos) => res.json(todos));
 });

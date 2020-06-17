@@ -11,7 +11,6 @@ import {
 } from "reactstrap";
 import { connect } from "react-redux";
 import { addTodo } from "../actions/todoActions";
-import { v4 as uuid } from "uuid";
 
 class ItemModal extends Component {
   state = {
@@ -27,20 +26,15 @@ class ItemModal extends Component {
 
   onChange = e => {
       this.setState({ [e.target.name]: e.target.value})
-  
-  
 }
 
   onSubmit = e => {
       e.preventDefault();
 
       const newTodo = {
-        id: uuid(),
         todo: this.state.todo
       }
-      console.log(newTodo);
       
-
       this.props.addTodo(newTodo)
 
       this.toggle()
@@ -55,16 +49,16 @@ class ItemModal extends Component {
           color="dark"
           style={{ marginBottom: "2rem" }}
           onClick={this.toggle}
-        > Add Todo
+        > Add Todo </Button>
           <Modal isOpen={this.state.modal} toggle={this.toogle}>
-            <ModalHeader toggle={this.toggle}>Add Todo</ModalHeader>
+            <ModalHeader toggle={this.toggle}>Add To TodoList</ModalHeader>
             <ModalBody>
                 <Form onSubmit={this.onSubmit}>
                      <FormGroup>
                      <Label for="todo">Todo</Label>
                     <Input 
                     type="text"
-                    name="todo"
+                    name="todo" 
                     id="todo"
                     placeholder="Add Todo"
                     onChange={this.onChange}
@@ -78,7 +72,7 @@ class ItemModal extends Component {
                 </Form>
             </ModalBody>
           </Modal>
-        </Button>
+        
       </div>
     );
   }

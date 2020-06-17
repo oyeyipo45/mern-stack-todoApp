@@ -1,13 +1,9 @@
-import { v4 as uuidv4 } from "uuid";
-import { GET_TODOS, ADD_TODO, EDIT_TODO, DELETE_TODO } from "../actions/types";
+
+import { GET_TODOS, ADD_TODO, EDIT_TODO, DELETE_TODO, TODOS_LOADING } from "../actions/types";
 
 const initialState = {
-  todos: [
-    { id: uuidv4(), todo: "go to market" },
-    { id: uuidv4(), todo: "I want to eart" },
-    { id: uuidv4(), todo: "meet banker" },
-    { id: uuidv4(), todo: "wetin dup" },
-  ],
+  todos: [],
+  loading: false
 };
 
 const todoReducer = (state = initialState, action) => {
@@ -15,6 +11,8 @@ const todoReducer = (state = initialState, action) => {
     case GET_TODOS:
       return {
         ...state,
+        todos: action.payload,
+        loading: false 
       };
       case ADD_TODO:
         return {
@@ -22,11 +20,24 @@ const todoReducer = (state = initialState, action) => {
           todos: [action.payload, ...state.todos]
         };
       case DELETE_TODO:
-        const updatedArray = state.todos.filter(todo => todo.id !== action.payload) 
+        const updatedArray = state.todos.filter(todo => todo._id !== action.payload) 
         return {
           ...state,
           todos: updatedArray
         };
+        case EDIT_TODO:
+          const todosArray = [...state.todos]
+            const indexOfTodoToUpdate = todosArray.findIndex(todo => todo._id === action.payload.id)
+            console.log(indexOfTodoToUpdate)
+            todosArray[indexOfTodoToUpdate].todo  =  action.payload.todo
+        return {
+          todosArray
+        }
+        case TODOS_LOADING:
+          return {
+            ...state,
+            loading: true
+          }
     default:
       return state;
   }

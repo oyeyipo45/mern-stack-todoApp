@@ -7,6 +7,7 @@ import PropTypes from "prop-types";
 
 class TodosList extends Component {
 
+    
     componentDidMount() {
         this.props.getTodos();
     }
@@ -19,6 +20,7 @@ class TodosList extends Component {
 
         const { todos } = this.props.todo;
         console.log(this.props)
+    
         
         return ( 
             <Container>
@@ -37,8 +39,8 @@ class TodosList extends Component {
                     </Button> */}
                     <ListGroup>
                         <TransitionGroup className="todo-list">
-                            {todos.map(({id, todo}) => (
-                                <CSSTransition key={id} timeout={500} classNames="fade">
+                            {todos.map(({_id, todo}) => (
+                                <CSSTransition key={_id} timeout={500} classNames="fade">
                                     <ListGroupItem>
                                         <div className="todos">
                                         <div className="todo-angle">
@@ -58,7 +60,9 @@ class TodosList extends Component {
                                         color="danger"
                                        
                                         size="sm"
-                                        onClick = {this.handleDelete.bind(this, id)}>
+                                        // onClick = {this.handleDelete.bind(this, id)}
+                                        onClick  = {() => this.handleDelete(_id)}
+                                        >
                                           &times;  
                                         </Button>
                                         </div>
