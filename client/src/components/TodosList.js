@@ -4,9 +4,10 @@ import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { connect } from "react-redux";
 import { getTodos, deleteTodo} from '../actions/todoActions';
 import PropTypes from "prop-types";
+import EditModal from './editModal';
 
 class TodosList extends Component {
-
+   
     
     componentDidMount() {
         this.props.getTodos();
@@ -16,27 +17,18 @@ class TodosList extends Component {
         this.props.deleteTodo(id)
     }
 
+    handleEdit = () => {
+            console.log("working")
+    }
+
     render() { 
 
         const { todos } = this.props.todo;
-        console.log(this.props)
-    
         
+        console.log("todalist", this.props);
+    
         return ( 
             <Container>
-                {/* <Button
-                color="dark"
-                style={{marginBottom: '2rem'}}
-                onClick={() => {
-                    const todo = prompt('ENTER TODO')
-                    if(todo) {
-                        this.setState(state => ({
-                            todos: [...state.todos, {id:uuidv4(), todo:todo}]
-                        }))
-                    }
-                }}>
-                    Add Todo
-                    </Button> */}
                     <ListGroup>
                         <TransitionGroup className="todo-list">
                             {todos.map(({_id, todo}) => (
@@ -47,20 +39,26 @@ class TodosList extends Component {
                                         {todo}
                                         </div>
                                         <div className="buttons">
-                                        <Button
+                                        {/* <Button
                                         className="remove-btn edit-btn"
                                         color="primary"
                                         size="sm"
-                                        onClick={() => console.log("working")
+                                        onClick={() => this.handleEdit(_id)
                                         }>
                                          &#9999;
-                                        </Button>
+                                        </Button> */}
+
+                                        <EditModal 
+                                        todo={todo}
+                                        className="remove-btn edit-btn"
+                                        color="primary"
+                                        size="sm"
+                                        />
+
                                         <Button
                                         className="remove-btn d-flex justify-content-end"
                                         color="danger"
-                                       
                                         size="sm"
-                                        // onClick = {this.handleDelete.bind(this, id)}
                                         onClick  = {() => this.handleDelete(_id)}
                                         >
                                           &times;  

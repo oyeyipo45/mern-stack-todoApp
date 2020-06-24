@@ -20,7 +20,9 @@ export const getTodos = () =>  dispatch => {
  
 export const addTodo = todo => async dispatch => {
   try {
-    const  data   = await axios.post("/api/todos", todo).then(res =>
+    const  data   = await axios
+    .post("/api/todos", todo)
+    .then(res =>
        
         dispatch({
           type: ADD_TODO,
@@ -52,6 +54,25 @@ export const deleteTodo = id => dispatch => {
     }))
 }
 
+// export const editTodo = (id) => dispatch => {
+//     axios
+//     .patch(Todo.findById(req.params.id)
+//     .then((todo) => res.json(todo))
+//     const newTodo = new Todo({
+//       title: req.body.title,
+//     });
+//     .then(newTodo.save().then((todos) => res.json(todos)));
+// };
+
+export const setTodosLoading = () => {
+    return {
+        type: TODOS_LOADING
+    }
+}
+
+
+
+
 
 export const editTodo = (todo) => {
     return {
@@ -60,8 +81,3 @@ export const editTodo = (todo) => {
     }
 }
 
-export const setTodosLoading = () => {
-    return {
-        type: TODOS_LOADING
-    }
-}

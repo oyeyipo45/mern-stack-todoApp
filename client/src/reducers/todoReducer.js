@@ -1,9 +1,10 @@
 
-import { GET_TODOS, ADD_TODO, EDIT_TODO, DELETE_TODO, TODOS_LOADING } from "../actions/types";
+import { GET_TODOS, ADD_TODO, EDIT_TODO, DELETE_TODO, TODOS_LOADING, IS_EDITING, } from "../actions/types";
 
 const initialState = {
   todos: [],
-  loading: false
+  loading: false,
+  isEditing: false
 };
 
 const todoReducer = (state = initialState, action) => {
@@ -20,12 +21,13 @@ const todoReducer = (state = initialState, action) => {
           todos: [action.payload, ...state.todos]
         };
       case DELETE_TODO:
-        const updatedArray = state.todos.filter(todo => todo._id !== action.payload) 
+        const updatedArray = state.todos.filter(todo => todo._id !== action.payload)
         return {
           ...state,
           todos: updatedArray
         };
         case EDIT_TODO:
+          
           const todosArray = [...state.todos]
             const indexOfTodoToUpdate = todosArray.findIndex(todo => todo._id === action.payload.id)
             console.log(indexOfTodoToUpdate)
@@ -38,6 +40,11 @@ const todoReducer = (state = initialState, action) => {
             ...state,
             loading: true
           }
+        case IS_EDITING:
+        return{
+          ...state,
+          isEditing: true
+        }
     default:
       return state;
   }

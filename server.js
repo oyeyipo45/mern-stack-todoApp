@@ -36,7 +36,7 @@ const db = require('./config/keys').mongoURI
 //Use Routes
 app.use('/api/todos', todos)
 
-
+//SERVER STATIC ASSESTS IF INT PRODUCTION
 
 
 const port = process.env.PORT || 5000
