@@ -32,9 +32,7 @@ const db = require('./config/keys').mongoURI
     .then(() => console.log('MongoDB connected..!'))
     .catch((err) => console.log(err))
 
-
-
-   
+  
 //Use Routes
 app.use('/api/todos', todos)
 app.use('/api/users', users)
