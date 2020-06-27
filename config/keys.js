@@ -1,5 +1,5 @@
 module.exports = {
-    mongoURI : 'mongodb+srv://damilola:Kolade11.@cluster0-s7fen.mongodb.net/todo?retryWrites=true&w=majority'
+    mongoURI : process.env.MONGOURI
 }
 
 

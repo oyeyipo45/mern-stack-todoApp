@@ -3,9 +3,12 @@ const mongoose = require("mongoose");
 const morgan = require("morgan");
 const app = express();
 const path = require("path")
+const dotenv = require("dotenv")
+
 
 //Getting Routes
 const todos = require("./routes/api/todos")
+const users = require('./routes/api/users')
 
 
 //Apply Middleware
@@ -14,11 +17,9 @@ app.use(morgan("tiny"));
 //body parser middleware
 app.use(express.json());
 app.use(express.urlencoded({extended: true}))
-// const bodyParser = require("body-parser")
-// app.use(bodyParser.json())
-// app.use(bodyParser.urlencoded({ extended: true }));
 
 //db config
+dotenv.config();
 const db = require('./config/keys').mongoURI
 
 //connect to Mongo 
@@ -36,6 +37,7 @@ const db = require('./config/keys').mongoURI
    
 //Use Routes
 app.use('/api/todos', todos)
+app.use('/api/users', users)
 
 //SERVER STATIC ASSESTS IF IN PRODUCTION
 if(process.env.NODE_ENV === 'production') {
