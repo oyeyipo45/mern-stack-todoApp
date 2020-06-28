@@ -50,6 +50,8 @@ class ItemModal extends Component {
           style={{ marginBottom: "2rem" }}
           onClick={this.toggle}
         > Add Todo </Button>
+                    <p>TODO EDIT BUTTON IS NOT FUNCTIONAL </p>
+
           <Modal isOpen={this.state.modal} toggle={this.toogle}>
             <ModalHeader toggle={this.toggle}>Add To TodoList</ModalHeader>
             <ModalBody>

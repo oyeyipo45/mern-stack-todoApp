@@ -1,15 +1,19 @@
 const express = require("express");
 const router = express.Router();
 
+
 //User Model
 const User = require("../../models/User");
+
 
 //@route GET api/uers
 //@desc Get All Users
 
+
 router.post("/", (req, res) => {
   res.send('register');
 });
+
 
 //@route GET api/todos
 //@desc Get ONE todos
