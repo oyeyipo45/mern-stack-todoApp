@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 
 //create Schema
 const  UserSchema = new Schema({
-    todo: {
+    name: {
         type: String,
         required: true
     }, 
@@ -27,5 +27,5 @@ const  UserSchema = new Schema({
 });
 
 
-module.exports = User = mongoose.model('user', 
+module.exports = User = mongoose.model('users', 
 UserSchema)

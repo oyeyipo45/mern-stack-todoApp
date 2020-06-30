@@ -6,9 +6,6 @@ const path = require("path")
 const dotenv = require("dotenv")
 
 
-//Getting Routes
-const todos = require("./routes/api/todos")
-const users = require('./routes/api/users')
 
 
 //Apply Middleware
@@ -23,16 +20,21 @@ dotenv.config();
 const db = require('./config/keys').mongoURI
 
 //connect to Mongo 
- mongoose
-    .connect(db, {
-      useUnifiedTopology: true,
-      useCreateIndex: true,
-      useNewUrlParser: true
-    })
-    .then(() => console.log('MongoDB connected..!'))
-    .catch((err) => console.log(err))
+mongoose
+  .connect(db, {
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useNewUrlParser: true
+  })
+  .then(() => console.log('MongoDB connected..!'))
+  .catch((err) => console.log(err))
 
-  
+
+
+//Getting Routes
+const todos = require("./routes/api/todos")
+const users = require('./routes/api/users')
+
 //Use Routes
 app.use('/api/todos', todos)
 app.use('/api/users', users)
