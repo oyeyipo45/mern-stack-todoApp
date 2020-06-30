@@ -11,7 +11,8 @@ const jwtSecret = require("../../config/keys").jwtSecret;
 //User Model
 const User = require("../../models/User");
 
-//@route GET api/uSers
+
+//@route POST api/uSers
 //@desc Get All Users
 //access PUBLIC
 
@@ -67,7 +68,7 @@ router.post("/", (req, res) => {
 //@desc Get ONE users
 //PUBLIC
 
-router.get("/", async (req, res) => {
+router.get("/user", async (req, res) => {
   try {
     const body = await req.body;
     console.log(body);

@@ -34,10 +34,12 @@ mongoose
 //Getting Routes
 const todos = require("./routes/api/todos")
 const users = require('./routes/api/users')
+const auth= require('./routes/api/auth')
 
 //Use Routes
 app.use('/api/todos', todos)
 app.use('/api/users', users)
+app.use('/api/auth', auth)
 
 //SERVER STATIC ASSESTS IF IN PRODUCTION
 if(process.env.NODE_ENV === 'production') {
