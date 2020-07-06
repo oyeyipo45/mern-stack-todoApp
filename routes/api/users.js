@@ -15,6 +15,7 @@ const User = require("../../models/User");
 //@route POST api/uSers
 //@desc Get All Users
 //access PUBLIC
+//CAN SERVE AS LOGIN TOO
 
 router.post("/", (req, res) => {
   const { name, email, password } = req.body;
