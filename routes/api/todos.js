@@ -25,7 +25,8 @@ router.get("/:id", (req, res) => {
 //@route POST api/todos
 //@desc POST a todo
 //ACCESS PRIVATE
-router.post("/",auth,  (req, res) => {
+// auth, removed auth so it is testable be any one.....put back when ready
+router.post("/",  (req, res) => {
   const newTodo = new Todo({
     todo: req.body.todo,
   });
@@ -44,7 +45,8 @@ router.patch("/:id", (req, res) => {
 //@route DELETE api/todos
 //@desc DELETE a todo
 //ACCESS PRIVATE
-router.delete("/:id",auth,  async (req, res) => {
+// auth, removed auth so it is testable be any one.....put back when ready
+router.delete("/:id", async (req, res) => {
   Todo.findById(req.params.id)
     .then((todo) => todo.remove().then(() => res.json({ success: true })))
     .catch((err) => res.status(404).json({ message: Error404 }));
