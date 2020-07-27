@@ -2,7 +2,7 @@
 A MERN Stack Todo-App built with intrinsic functionalities
 
 
-##Built with:
+## Built with:
 React Js, Redux, JavaScript, Node Js, Express Js, MongoDB.
 
 
